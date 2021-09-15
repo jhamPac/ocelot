@@ -44,6 +44,7 @@ executable ocelot-exe
   build-depends:
       base >=4.7 && <5
     , ocelot
+    , optparse-applicative
     , servant-server
   default-language: Haskell2010
 

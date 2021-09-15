@@ -36,6 +36,7 @@ executables:
         dependencies:
             - ocelot
             - servant-server
+            - optparse-applicative
 
 tests:
     ocelot-test:
