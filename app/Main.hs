@@ -1,6 +1,7 @@
 module Main where
 
-import Lib
+import           Data.Semigroup ((<>))
+import           Lib
 
 main :: IO ()
 main = someFunc
