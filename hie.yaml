@@ -1,0 +1,13 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: "ocelot:lib"
+
+    - path: "./app/Main.hs"
+      component: "ocelot:exe:ocelot-exe"
+
+    - path: "./app/Paths_ocelot.hs"
+      component: "ocelot:exe:ocelot-exe"
+
+    - path: "./test"
+      component: "ocelot:test:ocelot-test"
