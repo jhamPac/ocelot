@@ -6,12 +6,12 @@ cabal-version: 1.12
 
 name:           ocelot
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/ocelot#readme>
-homepage:       https://github.com/githubuser/ocelot#readme
-bug-reports:    https://github.com/githubuser/ocelot/issues
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2021 Author name here
+description:    Please see the README on GitHub at <https://github.com/jhamPac/ocelot/blob/main/README.md>
+homepage:       https://github.com/jhamPac/ocelot#readme
+bug-reports:    https://github.com/jhamPac/ocelot/issues
+author:         jhamPac
+maintainer:     cloud@kevia.me
+copyright:      2021 jhamPac
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
@@ -21,7 +21,7 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/githubuser/ocelot
+  location: https://github.com/jhamPac/ocelot
 
 library
   exposed-modules:
@@ -44,6 +44,7 @@ executable ocelot-exe
   build-depends:
       base >=4.7 && <5
     , ocelot
+    , servant-server
   default-language: Haskell2010
 
 test-suite ocelot-test

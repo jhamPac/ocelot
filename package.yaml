@@ -35,6 +35,7 @@ executables:
             - -with-rtsopts=-N
         dependencies:
             - ocelot
+            - servant-server
 
 tests:
     ocelot-test:
