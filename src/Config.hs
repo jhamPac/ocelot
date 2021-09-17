@@ -2,6 +2,9 @@
 
 module Config where
 
+import           Data.Aeson            (eitherDecode, withObject, (.:))
+import           Data.Bifunctor        (first)
+import           Data.ByteString.Lazy  as DBL
 import           Data.Functor.Identity (Identity (Identity))
 
 type Host = String
