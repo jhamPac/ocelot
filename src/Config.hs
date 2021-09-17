@@ -10,10 +10,10 @@ module Config where
 import           Data.Aeson            (FromJSON (parseJSON), eitherDecode,
                                         toJSON)
 import           Data.Bifunctor        (first)
-import           Data.ByteString.Lazy  as DBL
+import           Data.ByteString.Lazy  as DBL (ByteString, readFile)
 import           Data.Functor.Identity (Identity (Identity))
-import           GHC.Generics
-import           System.FilePath       as FP
+import           GHC.Generics          (Generic)
+import           System.FilePath       as FP (FilePath)
 import           Text.Parsec.Error     (ParseError)
 
 type Host = String
@@ -40,7 +40,7 @@ data ConfigurationError = ConfigParseError String
                         | TOMLParseError ParseError
                         | InvalidConfigError String
                         | InvalidPath FP.FilePath String
-                            deriving (Eq)
+                        deriving (Eq)
 
 class (FromJSON cfg) => FromJSONFile cfg where
     fromJSONFile :: FilePath -> IO (Either ConfigurationError cfg)
