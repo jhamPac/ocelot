@@ -22,7 +22,7 @@ type Port = Integer
 data AppConfig f = AppConfig
     { acHost :: f Host
     , acPort :: f Port
-    } deriving (Generic)
+    }
 
 type CompleteAppConfig = AppConfig Identity
 deriving instance Generic CompleteAppConfig
@@ -45,6 +45,12 @@ data ConfigurationError = ConfigParseError String
 class (FromJSON cfg) => FromJSONFile cfg where
     fromJSONFile :: FilePath -> IO (Either ConfigurationError cfg)
 
+instance FromJSONFile PartialAppConfig where
+    fromJSONFile path = decodeAndTransformError <$> DBL.readFile path
+        where
+            decodeAndTransformError :: ByteString -> Either ConfigurationError PartialAppConfig
+            decodeAndTransformError = first ConfigParseError . eitherDecode
+
 class HasDefaultValue a where
     defaultValue :: a
 
@@ -59,14 +65,6 @@ instance HasDefaultValue (AppConfig Identity) where
 
 instance HasDefaultValue (AppConfig Maybe) where
     defaultValue = AppConfig (Just defaultHost) (Just defaultPort)
-
-instance FromJSON PartialAppConfig where
-    parseJSON = withObject "cfg" parseObj
-        where
-            parseObj :: Object -> Parser PartialAppConfig
-            parseObj obj = obj .: "host"
-                            >>= \host -> obj .: "port"
-                            >>= \port -> pure $ AppConfig {host=host, port=port}
 
 
 
