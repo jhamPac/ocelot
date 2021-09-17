@@ -27,6 +27,8 @@ library:
     dependencies:
         - aeson
         - bytestring
+        - filepath
+        - parsec
 
 executables:
     ocelot-exe:
