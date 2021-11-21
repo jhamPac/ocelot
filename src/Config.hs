@@ -4,7 +4,6 @@
 {-# LANGUAGE OverloadedStrings  #-}
 {-# LANGUAGE StandaloneDeriving #-}
 
-
 module Config where
 
 import           Data.Aeson            (FromJSON (parseJSON), eitherDecode,
